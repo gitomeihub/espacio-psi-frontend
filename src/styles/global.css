@@ -1,0 +1,1385 @@
+@import './variables.css';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  width: min(1120px, 90%);
+  margin: 0 auto;
+}
+
+.header {
+  background-color: rgba(250, 247, 239, 0.95);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-content {
+  height: 72px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+.logo span {
+  color: var(--color-accent);
+}
+
+.nav {
+  display: flex;
+  gap: 22px;
+  font-size: 15px;
+}
+
+.nav a:hover {
+  color: var(--color-primary-dark);
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-primary {
+  background-color: var(--color-primary-dark);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary);
+}
+
+.btn-secondary {
+  background-color: var(--color-surface);
+  color: var(--color-primary-dark);
+  border: 1px solid var(--color-border);
+}
+
+.btn-outline {
+  border: 1px solid var(--color-primary-dark);
+  color: var(--color-primary-dark);
+}
+
+.btn-outline:hover,
+.btn-secondary:hover {
+  background-color: var(--color-primary-dark);
+  color: white;
+}
+
+.hero {
+  padding: 90px 0;
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  align-items: center;
+  gap: 50px;
+}
+
+.eyebrow {
+  color: var(--color-primary-dark);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  font-size: clamp(40px, 6vw, 68px);
+  line-height: 1.05;
+  margin-bottom: 24px;
+}
+
+.hero-description {
+  font-size: 18px;
+  color: var(--color-muted);
+  line-height: 1.7;
+  max-width: 620px;
+}
+
+.hero-actions {
+  margin-top: 32px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hero-card {
+  background-color: var(--color-surface);
+  padding: 32px;
+  border-radius: 28px;
+  box-shadow: 0 20px 60px rgba(47, 51, 46, 0.12);
+  border: 1px solid var(--color-border);
+}
+
+.hero-card h2 {
+  font-size: 22px;
+  margin-bottom: 24px;
+}
+
+.slot {
+  background-color: var(--color-background);
+  padding: 16px;
+  border-radius: 18px;
+  margin-bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.slot strong {
+  color: var(--color-primary-dark);
+}
+
+.section {
+  padding: 80px 0;
+}
+
+.section h2 {
+  font-size: 36px;
+  margin-bottom: 18px;
+  color: var(--color-primary-dark);
+}
+
+.section p {
+  color: var(--color-muted);
+  font-size: 17px;
+  line-height: 1.7;
+  max-width: 760px;
+}
+
+.section-alt {
+  background-color: var(--color-surface);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 32px;
+}
+
+.card {
+  background-color: var(--color-background);
+  padding: 28px;
+  border-radius: 24px;
+  border: 1px solid var(--color-border);
+}
+
+.card h3 {
+  color: var(--color-primary-dark);
+  margin-bottom: 12px;
+}
+
+.turnos-box {
+  background-color: var(--color-primary);
+  padding: 48px;
+  border-radius: 32px;
+  text-align: center;
+}
+
+.turnos-box h2,
+.turnos-box p {
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.turnos-box .btn {
+  margin-top: 24px;
+  background-color: var(--color-accent);
+  color: var(--color-text);
+}
+
+.footer {
+  background-color: var(--color-primary-dark);
+  color: white;
+  padding: 32px 0;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: 14px;
+}
+
+@media (max-width: 900px) {
+  .header-content {
+    height: auto;
+    padding: 20px 0;
+    flex-direction: column;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+/* =========================
+   PÁGINAS DE AUTENTICACIÓN
+   Login y registro
+   ========================= */
+
+/* Contenedor general de las pantallas de login y registro */
+.auth-page {
+  min-height: calc(100vh - 160px);
+  display: grid;
+  place-items: center;
+  padding: 64px 20px;
+}
+
+/* Tarjeta central donde se muestra el formulario */
+.auth-card {
+  width: min(100%, 500px);
+  background-color: var(--color-surface);
+  padding: 42px;
+  border: 1px solid var(--color-border);
+  border-radius: 28px;
+  box-shadow: 0 18px 45px rgba(47, 51, 46, 0.12);
+}
+
+/* Título principal del formulario */
+.auth-card h1 {
+  margin: 10px 0 16px;
+  color: var(--color-primary-dark);
+  font-size: 36px;
+}
+
+/* Texto explicativo debajo del título */
+.auth-description {
+  color: var(--color-muted);
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+/* Formulario: coloca los campos uno debajo del otro */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Cada label contiene un texto y su input */
+.auth-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* Campos de texto del formulario */
+.auth-form input {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 15px;
+  outline: none;
+}
+
+/* Cambio visual al seleccionar un campo */
+.auth-form input:focus {
+  border-color: var(--color-primary-dark);
+  box-shadow: 0 0 0 3px rgba(95, 127, 92, 0.15);
+}
+
+/* Botón del formulario */
+.auth-form .btn {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+/* Texto con enlace para ir a login o registro */
+.auth-link {
+  margin-top: 24px;
+  text-align: center;
+  color: var(--color-muted);
+}
+
+/* Link dentro del texto de ayuda */
+.auth-link a {
+  color: var(--color-primary-dark);
+  font-weight: 700;
+}
+
+/* Diseño para pantallas pequeñas */
+@media (max-width: 500px) {
+  .auth-card {
+    padding: 30px 22px;
+  }
+
+  .auth-card h1 {
+    font-size: 30px;
+  }
+}
+/* =========================
+   MENSAJES DE FORMULARIOS
+   ========================= */
+
+/* Mensaje mostrado cuando el login tiene credenciales inválidas */
+.form-error {
+  background-color: #fce9e5;
+  color: #9b2c2c;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* =========================
+   PANELES PROVISORIOS
+   ========================= */
+
+/* Contenedor general de los dashboards */
+.dashboard-page {
+  min-height: calc(100vh - 160px);
+  padding: 70px 0;
+}
+
+/* Tarjeta de bienvenida inicial de cada panel */
+.dashboard-welcome {
+  width: min(900px, 90%);
+  margin: 0 auto;
+  background-color: var(--color-surface);
+  padding: 42px;
+  border: 1px solid var(--color-border);
+  border-radius: 28px;
+  box-shadow: 0 18px 45px rgba(47, 51, 46, 0.08);
+}
+
+/* Título de bienvenida de los paneles */
+.dashboard-welcome h1 {
+  margin: 10px 0 16px;
+  color: var(--color-primary-dark);
+  font-size: 38px;
+}
+
+/* Descripción de bienvenida */
+.dashboard-welcome p:last-child {
+  max-width: 650px;
+  color: var(--color-muted);
+  line-height: 1.7;
+}
+
+/* =========================
+   SESIÓN DEL USUARIO
+   Header cuando una persona inició sesión
+   ========================= */
+
+/* Contenedor de saludo, acceso al panel y botón de salida */
+.session-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Mensaje breve que muestra el primer nombre del usuario */
+.user-greeting {
+  color: var(--color-muted);
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* Botón para cerrar sesión */
+.btn-logout {
+  border: 1px solid #b85757;
+  background-color: transparent;
+  color: #a33f3f;
+  cursor: pointer;
+}
+
+/* Efecto visual al pasar el mouse por el botón de salida */
+.btn-logout:hover {
+  background-color: #b85757;
+  color: white;
+}
+
+/* Ajustes de header para pantallas pequeñas */
+@media (max-width: 900px) {
+  .session-actions {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+/* =========================
+   RESERVA DE TURNOS
+   Pantalla de formulario
+   ========================= */
+
+/* Contenedor general de la pantalla de reserva */
+.booking-page {
+  min-height: calc(100vh - 160px);
+  display: grid;
+  place-items: center;
+  padding: 64px 20px;
+}
+
+/* Tarjeta que contiene el formulario de reserva */
+.booking-card {
+  width: min(100%, 620px);
+  padding: 42px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 28px;
+  box-shadow: 0 18px 45px rgba(47, 51, 46, 0.12);
+}
+
+/* Título de la página de reserva */
+.booking-card h1 {
+  margin: 10px 0 16px;
+  color: var(--color-primary-dark);
+  font-size: 36px;
+}
+
+/* Texto descriptivo debajo del título */
+.booking-description {
+  margin-bottom: 28px;
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+/* Formulario de reserva en formato vertical */
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Estructura de los labels dentro del formulario */
+.booking-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 600;
+}
+
+/* Campos de formulario: input, select y textarea */
+.booking-form input,
+.booking-form select,
+.booking-form textarea {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background-color: white;
+  color: var(--color-text);
+  font: inherit;
+  font-size: 15px;
+  outline: none;
+  resize: vertical;
+}
+
+/* Cambio visual cuando se selecciona un campo */
+.booking-form input:focus,
+.booking-form select:focus,
+.booking-form textarea:focus {
+  border-color: var(--color-primary-dark);
+  box-shadow: 0 0 0 3px rgba(95, 127, 92, 0.15);
+}
+
+/* Botón de confirmación ocupa todo el ancho */
+.booking-form .btn {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+}
+
+/* Mensaje verde de reserva exitosa */
+.form-success {
+  padding: 12px 14px;
+  border-radius: 12px;
+  background-color: #e6f2e5;
+  color: #38623d;
+  font-size: 14px;
+}
+
+/* =========================
+   TURNOS DEL PACIENTE
+   ========================= */
+
+/* Sección donde se muestra la lista de turnos */
+.appointments-section {
+  width: min(1100px, 90%);
+  margin: 36px auto 0;
+}
+
+/* Encabezado de la sección "Mis turnos" */
+.appointments-header h2 {
+  margin-top: 8px;
+  color: var(--color-primary-dark);
+  font-size: 32px;
+}
+
+/* Mensaje para pacientes sin turnos */
+.empty-state {
+  margin-top: 24px;
+  padding: 32px;
+  border: 1px dashed var(--color-border);
+  border-radius: 22px;
+  background-color: var(--color-surface);
+}
+
+/* Título dentro del estado vacío */
+.empty-state h3 {
+  margin-bottom: 10px;
+  color: var(--color-primary-dark);
+}
+
+/* Texto dentro del estado vacío */
+.empty-state p {
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+/* Grilla que organiza las tarjetas de turnos */
+.appointments-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 24px;
+}
+
+/* Tarjeta individual de cada turno */
+.appointment-card {
+  padding: 24px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 22px;
+  box-shadow: 0 10px 25px rgba(47, 51, 46, 0.06);
+}
+
+/* Parte superior de la tarjeta: fecha y estado */
+.appointment-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Fecha del turno */
+.appointment-date {
+  color: var(--color-primary-dark);
+  font-weight: 700;
+}
+
+/* Horario del turno */
+.appointment-card h3 {
+  margin: 18px 0 14px;
+  font-size: 28px;
+  color: var(--color-text);
+}
+
+/* Información interna de cada turno */
+.appointment-card p {
+  margin-top: 8px;
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+
+/* Etiquetas de estado */
+.status {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Estado para turnos confirmados */
+.status-confirmed {
+  background-color: #e6f2e5;
+  color: #38623d;
+}
+
+/* Estado para turnos cancelados */
+.status-cancelled {
+  background-color: #fce9e5;
+  color: #9b2c2c;
+}
+
+/* Botón para cancelar un turno */
+.btn-cancel {
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px 14px;
+  border: 1px solid #b85757;
+  border-radius: 999px;
+  background-color: transparent;
+  color: #a33f3f;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+}
+
+/* Efecto visual al pasar sobre el botón de cancelar */
+.btn-cancel:hover {
+  background-color: #b85757;
+  color: white;
+}
+
+/* Ajustes para celular o pantallas angostas */
+@media (max-width: 850px) {
+  .appointments-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-card {
+    padding: 30px 22px;
+  }
+}
+
+/* =========================
+   PANEL DE LA PSICÓLOGA
+   Resumen y agenda general
+   ========================= */
+
+/* Contenedor de las tarjetas de resumen */
+.admin-summary {
+  width: min(1100px, 90%);
+  margin: 36px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Tarjeta individual de cada indicador */
+.stat-card {
+  padding: 26px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 22px;
+  box-shadow: 0 10px 25px rgba(47, 51, 46, 0.06);
+}
+
+/* Texto pequeño que identifica cada estadística */
+.stat-label {
+  display: block;
+  color: var(--color-muted);
+  font-size: 15px;
+}
+
+/* Número destacado dentro de la tarjeta */
+.stat-number {
+  display: block;
+  margin-top: 10px;
+  color: var(--color-primary-dark);
+  font-size: 38px;
+}
+
+/* Grilla de turnos mostrados para la administradora */
+.admin-appointments-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 24px;
+}
+
+/* Tarjeta individual de cada turno de la agenda */
+.admin-appointment-card {
+  padding: 24px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 22px;
+  box-shadow: 0 10px 25px rgba(47, 51, 46, 0.06);
+}
+
+/* Horario principal del turno */
+.admin-appointment-card h3 {
+  margin: 18px 0 14px;
+  color: var(--color-text);
+  font-size: 28px;
+}
+
+/* Información interna del turno */
+.admin-appointment-card p {
+  margin-top: 8px;
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+
+/* Etiqueta que indica si el pago está pendiente o realizado */
+.payment {
+  padding: 4px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Pago ya registrado */
+.payment-paid {
+  background-color: #e6f2e5;
+  color: #38623d;
+}
+
+/* Pago pendiente */
+.payment-pending {
+  background-color: #fff2d8;
+  color: #8a5a00;
+}
+
+/* Botón para registrar el pago de una sesión */
+.btn-payment {
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 999px;
+  background-color: var(--color-accent);
+  color: var(--color-text);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+}
+
+/* Efecto al pasar el mouse sobre el botón de pago */
+.btn-payment:hover {
+  filter: brightness(0.95);
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 850px) {
+  .admin-summary,
+  .admin-appointments-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* =========================
+   DISPONIBILIDAD DE TURNOS
+   Estados del selector de horarios
+   ========================= */
+
+/* Apariencia del selector cuando todavía no se puede usar */
+.booking-form select:disabled {
+  background-color: #f1eee8;
+  color: var(--color-muted);
+  cursor: not-allowed;
+}
+
+/* Mensaje mostrado cuando no quedan horarios para una fecha */
+.availability-message {
+  margin-top: -8px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background-color: #fff2d8;
+  color: #8a5a00;
+  font-size: 14px;
+  line-height: 1.5;
+}
+/* =========================
+   GESTIÓN DE PACIENTES
+   Panel de la administradora
+   ========================= */
+
+/* Contenedor general de la sección de pacientes */
+.patients-section {
+  width: min(1100px, 90%);
+  margin: 36px auto 0;
+}
+
+/* Encabezado con título y cantidad total de pacientes */
+.patients-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 20px;
+}
+
+/* Título principal de la sección */
+.patients-header h2 {
+  margin-top: 8px;
+  color: var(--color-primary-dark);
+  font-size: 32px;
+}
+
+/* Etiqueta con la cantidad total de pacientes */
+.patients-total {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background-color: #e6f2e5;
+  color: #38623d;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* Grilla de tarjetas de pacientes */
+.patients-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 24px;
+}
+
+/* Tarjeta individual de cada paciente */
+.patient-card {
+  padding: 24px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 22px;
+  box-shadow: 0 10px 25px rgba(47, 51, 46, 0.06);
+}
+
+/* Encabezado interno: inicial + nombre + email */
+.patient-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Círculo con la inicial del paciente */
+.patient-avatar {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* Nombre del paciente */
+.patient-card h3 {
+  color: var(--color-text);
+  font-size: 18px;
+}
+
+/* Email del paciente */
+.patient-email {
+  margin-top: 4px;
+  color: var(--color-muted);
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+/* Contenedor de estadísticas del paciente */
+.patient-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 24px;
+}
+
+/* Caja individual de cada dato */
+.patient-stat {
+  padding: 12px 8px;
+  border-radius: 14px;
+  background-color: var(--color-background);
+  text-align: center;
+}
+
+/* Texto pequeño de cada estadística */
+.patient-stat span {
+  display: block;
+  color: var(--color-muted);
+  font-size: 11px;
+  line-height: 1.3;
+}
+
+/* Número destacado de cada estadística */
+.patient-stat strong {
+  display: block;
+  margin-top: 7px;
+  color: var(--color-primary-dark);
+  font-size: 21px;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 850px) {
+  .patients-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .patients-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* =========================
+   REPROGRAMACIÓN DE TURNOS
+   ========================= */
+
+/* Contenedor de acciones disponibles en cada turno */
+.appointment-actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Botón para abrir la pantalla de reprogramación */
+.btn-reschedule {
+  width: 100%;
+  border: 1px solid var(--color-primary-dark);
+  background-color: transparent;
+  color: var(--color-primary-dark);
+  text-align: center;
+}
+
+/* Efecto al pasar sobre el botón de reprogramar */
+.btn-reschedule:hover {
+  background-color: var(--color-primary-dark);
+  color: white;
+}
+
+/* Evitamos que el botón de cancelar sume un margen extra */
+.appointment-actions .btn-cancel {
+  margin-top: 0;
+}
+
+/* Caja informativa dentro de la pantalla de reprogramación */
+.current-appointment-info {
+  margin: 24px 0;
+  padding: 18px;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  background-color: var(--color-background);
+}
+
+/* Separación entre los datos del turno */
+.current-appointment-info p {
+  margin-top: 8px;
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+
+/* El primer texto no necesita margen superior */
+.current-appointment-info p:first-child {
+  margin-top: 0;
+}
+
+/* Nota aclaratoria sobre los datos que se conservarán */
+.current-appointment-note {
+  margin-top: 14px !important;
+  color: var(--color-primary-dark) !important;
+  font-size: 14px;
+  font-weight: 700;
+}
+/* =========================
+   ACCIONES DE LA PROFESIONAL
+   Pago y cancelación desde agenda
+   ========================= */
+
+/* Agrupa los botones disponibles en cada turno */
+.admin-appointment-actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Evitamos margen extra cuando el botón de pago está dentro del grupo */
+.admin-appointment-actions .btn-payment {
+  margin-top: 0;
+}
+
+/* Botón para cancelar desde el panel profesional */
+.btn-admin-cancel {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #b85757;
+  border-radius: 999px;
+  background-color: transparent;
+  color: #a33f3f;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+}
+
+/* Efecto visual al pasar el mouse */
+.btn-admin-cancel:hover {
+  background-color: #b85757;
+  color: white;
+}
+/* =========================
+   CONFIGURACIÓN DE DISPONIBILIDAD
+   Panel de la profesional
+   ========================= */
+
+/* Contenedor general de la pantalla */
+.availability-page {
+  min-height: calc(100vh - 160px);
+  padding: 64px 0;
+}
+
+/* Encabezado de la pantalla */
+.availability-intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 24px;
+}
+
+/* Título principal */
+.availability-intro h1 {
+  margin: 10px 0 16px;
+  color: var(--color-primary-dark);
+  font-size: 40px;
+}
+
+/* Descripción debajo del título */
+.availability-intro > div > p:not(.eyebrow) {
+  max-width: 700px;
+  color: var(--color-muted);
+  line-height: 1.7;
+}
+
+/* Botón que lleva a disponibilidad desde el dashboard */
+.admin-availability-link {
+  margin-top: 24px;
+}
+
+/* Distribución de los dos formularios */
+.availability-layout {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+  margin-top: 36px;
+}
+
+/* Tarjeta de cada tipo de bloqueo */
+.availability-card {
+  padding: 30px;
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+  background-color: var(--color-surface);
+  box-shadow: 0 10px 25px rgba(47, 51, 46, 0.06);
+}
+
+/* Título de cada formulario */
+.availability-card h2 {
+  margin: 10px 0 12px;
+  color: var(--color-primary-dark);
+  font-size: 27px;
+}
+
+/* Texto explicativo de cada tarjeta */
+.availability-description {
+  min-height: 52px;
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
+/* Formulario vertical */
+.availability-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+/* Estructura interna de labels */
+.availability-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 700;
+}
+
+/* Campos del formulario */
+.availability-form input,
+.availability-form select,
+.availability-form textarea {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background-color: white;
+  color: var(--color-text);
+  font: inherit;
+  font-size: 15px;
+  outline: none;
+  resize: vertical;
+}
+
+/* Efecto visual al seleccionar un campo */
+.availability-form input:focus,
+.availability-form select:focus,
+.availability-form textarea:focus {
+  border-color: var(--color-primary-dark);
+  box-shadow: 0 0 0 3px rgba(95, 127, 92, 0.15);
+}
+
+/* Botón de cada formulario */
+.availability-form .btn {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+}
+
+/* Mensajes generales de éxito o error */
+.availability-feedback {
+  margin-top: 24px;
+}
+
+/* Sección de listados de bloqueos */
+.blocked-section {
+  margin-top: 48px;
+}
+
+/* Encabezado del listado */
+.blocked-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 20px;
+}
+
+/* Título del listado */
+.blocked-header h2 {
+  margin-top: 8px;
+  color: var(--color-primary-dark);
+  font-size: 32px;
+}
+
+/* Cantidad total de bloqueos */
+.blocked-total {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background-color: #fff2d8;
+  color: #8a5a00;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* Grilla de tarjetas de bloqueos */
+.blocked-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 24px;
+}
+
+/* Tarjeta individual de bloqueo */
+.blocked-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 22px;
+  min-height: 210px;
+  padding: 24px;
+  border: 1px solid var(--color-border);
+  border-radius: 22px;
+  background-color: var(--color-surface);
+  box-shadow: 0 10px 25px rgba(47, 51, 46, 0.06);
+}
+
+/* Etiqueta que indica si es día completo u horario puntual */
+.blocked-type {
+  display: inline-block;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background-color: #fff2d8;
+  color: #8a5a00;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Fecha y horario principal del bloqueo */
+.blocked-card h3 {
+  margin: 14px 0 10px;
+  color: var(--color-text);
+  font-size: 20px;
+}
+
+/* Motivo indicado por la profesional */
+.blocked-card p {
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+
+/* Botón para volver a habilitar una fecha u horario */
+.btn-unblock {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--color-primary-dark);
+  border-radius: 999px;
+  background-color: transparent;
+  color: var(--color-primary-dark);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+}
+
+/* Efecto al pasar el mouse */
+.btn-unblock:hover {
+  background-color: var(--color-primary-dark);
+  color: white;
+}
+
+/* Mejora de estilo para el texto principal del dashboard */
+.dashboard-welcome > p:not(.eyebrow) {
+  max-width: 650px;
+  color: var(--color-muted);
+  line-height: 1.7;
+}
+
+/* Diseño responsive */
+@media (max-width: 850px) {
+  .availability-intro,
+  .blocked-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .availability-layout,
+  .blocked-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* =========================
+   DISPONIBILIDAD POR PERÍODOS
+   Reglas semanales y rangos
+   ========================= */
+
+/* Tarjeta con reglas fijas de domingo y sábado */
+.weekly-rules-card {
+  margin-top: 36px;
+  padding: 30px;
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+  background-color: var(--color-surface);
+  box-shadow: 0 10px 25px rgba(47, 51, 46, 0.06);
+}
+
+/* Título de la tarjeta semanal */
+.weekly-rules-card h2 {
+  margin-top: 10px;
+  color: var(--color-primary-dark);
+  font-size: 27px;
+}
+
+/* Grilla con la regla de domingo y el control de sábado */
+.weekly-rules-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-top: 24px;
+}
+
+/* Tarjeta individual de cada regla semanal */
+.weekly-rule {
+  min-height: 145px;
+  padding: 20px;
+  border-radius: 18px;
+  background-color: var(--color-background);
+}
+
+/* Primera línea: día de la semana */
+.weekly-rule span {
+  display: block;
+  color: var(--color-muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* Estado principal de cada regla */
+.weekly-rule strong {
+  display: block;
+  margin-top: 8px;
+  color: var(--color-primary-dark);
+  font-size: 19px;
+}
+
+/* Texto explicativo de cada regla */
+.weekly-rule p {
+  margin-top: 8px;
+  color: var(--color-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Variante visual para domingos cerrados */
+.weekly-rule-closed {
+  border: 1px solid #ead7c4;
+  background-color: #fff7ed;
+}
+
+/* Label clickable que contiene el interruptor de sábado */
+.saturday-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+}
+
+/* Checkbox de sábado */
+.saturday-toggle input {
+  width: 22px;
+  height: 22px;
+  accent-color: var(--color-primary-dark);
+  cursor: pointer;
+}
+
+/* Distribuye pares de campos desde/hasta */
+.availability-period-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+/* Texto adicional para rangos horarios bloqueados */
+.blocked-range-line {
+  margin-top: 10px !important;
+  color: var(--color-primary-dark) !important;
+  font-weight: 700;
+}
+
+/* Ajustes para celular */
+@media (max-width: 850px) {
+  .weekly-rules-grid,
+  .availability-period-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .saturday-toggle {
+    align-items: flex-start;
+  }
+}
